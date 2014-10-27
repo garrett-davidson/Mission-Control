@@ -13,6 +13,11 @@
 		0D2835B119FB3976006BE10F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D2835B019FB3976006BE10F /* Images.xcassets */; };
 		0D2835B419FB3976006BE10F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D2835B219FB3976006BE10F /* LaunchScreen.xib */; };
 		0D2835C019FB3976006BE10F /* Mission_ControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2835BF19FB3976006BE10F /* Mission_ControlTests.swift */; };
+		0D2835D319FC8949006BE10F /* Light-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2835D219FC8949006BE10F /* Light-on.png */; };
+		0D2835DD19FC92C3006BE10F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2835DC19FC92C3006BE10F /* libz.dylib */; };
+		0D2835DF19FC92C9006BE10F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2835DE19FC92C9006BE10F /* CFNetwork.framework */; };
+		0DECD5F619FDBC60002F34CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */; };
+		0DECD5F819FDC154002F34CE /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECD5F719FDC154002F34CE /* NMSSH.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +30,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0D2835D619FC8F05006BE10F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0D2835A419FB3976006BE10F /* Mission Control.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mission Control.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2835A819FB3976006BE10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +53,12 @@
 		0D2835B919FB3976006BE10F /* Mission ControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mission ControlTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2835BE19FB3976006BE10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D2835BF19FB3976006BE10F /* Mission_ControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission_ControlTests.swift; sourceTree = "<group>"; };
+		0D2835CB19FC8292006BE10F /* Mission Control-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mission Control-Bridging-Header.h"; sourceTree = "<group>"; };
+		0D2835D219FC8949006BE10F /* Light-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Light-on.png"; sourceTree = "<group>"; };
+		0D2835DC19FC92C3006BE10F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0D2835DE19FC92C9006BE10F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0DECD5F719FDC154002F34CE /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DECD5F819FDC154002F34CE /* NMSSH.framework in Frameworks */,
+				0D2835DF19FC92C9006BE10F /* CFNetwork.framework in Frameworks */,
+				0D2835DD19FC92C3006BE10F /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +85,9 @@
 		0D28359B19FB3976006BE10F = {
 			isa = PBXGroup;
 			children = (
+				0D2835DE19FC92C9006BE10F /* CFNetwork.framework */,
+				0D2835DC19FC92C3006BE10F /* libz.dylib */,
+				0DECD5F719FDC154002F34CE /* NMSSH.framework */,
 				0D2835A619FB3976006BE10F /* Mission Control */,
 				0D2835BC19FB3976006BE10F /* Mission ControlTests */,
 				0D2835A519FB3976006BE10F /* Products */,
@@ -78,11 +107,14 @@
 			isa = PBXGroup;
 			children = (
 				0D2835A919FB3976006BE10F /* AppDelegate.swift */,
+				0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */,
 				0D2835AB19FB3976006BE10F /* ViewController.swift */,
 				0D2835AD19FB3976006BE10F /* Main.storyboard */,
 				0D2835B019FB3976006BE10F /* Images.xcassets */,
 				0D2835B219FB3976006BE10F /* LaunchScreen.xib */,
 				0D2835A719FB3976006BE10F /* Supporting Files */,
+				0D2835CB19FC8292006BE10F /* Mission Control-Bridging-Header.h */,
+				0D2835D219FC8949006BE10F /* Light-on.png */,
 			);
 			path = "Mission Control";
 			sourceTree = "<group>";
@@ -122,6 +154,7 @@
 				0D2835A019FB3976006BE10F /* Sources */,
 				0D2835A119FB3976006BE10F /* Frameworks */,
 				0D2835A219FB3976006BE10F /* Resources */,
+				0D2835D619FC8F05006BE10F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -161,6 +194,7 @@
 				TargetAttributes = {
 					0D2835A319FB3976006BE10F = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = FL8523SFDK;
 					};
 					0D2835B819FB3976006BE10F = {
 						CreatedOnToolsVersion = 6.1;
@@ -193,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D2835AF19FB3976006BE10F /* Main.storyboard in Resources */,
+				0D2835D319FC8949006BE10F /* Light-on.png in Resources */,
 				0D2835B419FB3976006BE10F /* LaunchScreen.xib in Resources */,
 				0D2835B119FB3976006BE10F /* Images.xcassets in Resources */,
 			);
@@ -214,6 +249,7 @@
 			files = (
 				0D2835AC19FB3976006BE10F /* ViewController.swift in Sources */,
 				0D2835AA19FB3976006BE10F /* AppDelegate.swift in Sources */,
+				0DECD5F619FDBC60002F34CE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,9 +374,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Mission",
+					Control,
+				);
 				INFOPLIST_FILE = "Mission Control/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mission Control/Mission Control-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -348,9 +393,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Mission",
+					Control,
+				);
 				INFOPLIST_FILE = "Mission Control/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mission Control/Mission Control-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -407,6 +460,7 @@
 				0D2835C519FB3976006BE10F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D2835C619FB3976006BE10F /* Build configuration list for PBXNativeTarget "Mission ControlTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +469,7 @@
 				0D2835C819FB3976006BE10F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

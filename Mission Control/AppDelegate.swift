@@ -16,6 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
+        let defaults = NSUserDefaults.standardUserDefaults()
+
+        if (defaults.objectForKey("host") == nil)
+        {
+            defaults.setObject("127.0.0.1", forKey: "host")
+        }
+
+        if (defaults.objectForKey("user") == nil)
+        {
+            defaults.setObject("username", forKey: "user")
+        }
+
+        if (defaults.objectForKey("pass") == nil)
+        {
+            defaults.setObject("password", forKey: "pass")
+        }
+
+        if (defaults.objectForKey("port") == nil)
+        {
+            defaults.setObject("22", forKey: "port")
+        }
+
         return true
     }
 
