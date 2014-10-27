@@ -81,7 +81,7 @@
                                     <constraint firstAttribute="width" constant="97" id="lpc-0E-WwD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="chageFirstResponder:" destination="Ote-Z9-Lhq" eventType="editingDidBegin" id="Pyr-py-iCi"/>
                                     <action selector="writeSettings:" destination="Ote-Z9-Lhq" eventType="editingDidEnd" id="K9t-H8-GI1"/>
@@ -94,7 +94,7 @@
                                     <constraint firstAttribute="height" constant="30" id="mbZ-D2-akF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="chageFirstResponder:" destination="Ote-Z9-Lhq" eventType="editingDidEnd" id="s9d-ij-SyG"/>
                                     <action selector="writeSettings:" destination="Ote-Z9-Lhq" eventType="editingDidEnd" id="Qsc-WL-a9g"/>
@@ -107,7 +107,7 @@
                                     <constraint firstAttribute="width" constant="97" id="78b-Mm-5HT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="chageFirstResponder:" destination="Ote-Z9-Lhq" eventType="editingDidEnd" id="NOe-uT-o4Q"/>
                                     <action selector="writeSettings:" destination="Ote-Z9-Lhq" eventType="editingDidEnd" id="a7q-Gv-cNN"/>
@@ -120,7 +120,7 @@
                                     <constraint firstAttribute="height" constant="30" id="OE7-iK-czy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="chageFirstResponder:" destination="Ote-Z9-Lhq" eventType="editingDidEnd" id="cDs-28-a6p"/>
                                     <action selector="writeSettings:" destination="Ote-Z9-Lhq" eventType="editingDidEnd" id="PGH-xh-9MQ"/>
@@ -160,7 +160,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rb2-7i-u7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer cancelsTouchesInView="NO" id="Duz-DE-Qvb">
                     <connections>
-                        <action selector="dismissKeyboard:" destination="Rb2-7i-u7r" id="hOO-XX-f4X"/>
+                        <action selector="dismissKeyboard:" destination="Ote-Z9-Lhq" id="KjY-sZ-mfm"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

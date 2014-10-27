@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
 
-
+        connectSession()
     }
 
     func connectSession()
@@ -38,7 +38,10 @@ class ViewController: UIViewController {
         //store pass in keychain
 
         sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
-        sshSession!.authenticateByPassword(pass)
+        if (sshSession != nil)
+        {
+            sshSession!.authenticateByPassword(pass)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,11 +50,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func toggleLight(sender: AnyObject) {
-        sendCommand("python ~/ArduinoControl/py-lights.py toggle");
+        lightStateLabel.text = sendCommand("python ~/ArduinoControl/py-lights.py toggle");
     }
 
 
-    func sendCommand(command: String)
+    func sendCommand(command: String) -> String
     {
         if (sshSession == nil || !sshSession!.connected)
         {
@@ -59,13 +62,14 @@ class ViewController: UIViewController {
         }
         
         var error: NSError?
-        sshSession!.channel.execute(command, error: &error)
+        let response = sshSession!.channel.execute(command, error: &error)
 
         if (error != nil)
         {
             println(error)
         }
 
+        return response
     }
 }
 
