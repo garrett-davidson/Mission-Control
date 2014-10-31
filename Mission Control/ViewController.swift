@@ -7,9 +7,10 @@
 //
 
 import UIKit
-//import NMSSH
 
 class ViewController: UIViewController {
+
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,12 +24,19 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
 
-        connectSession()
+        if (defaults.boolForKey("startOnLaunch"))
+        {
+            self.connectSession()
+        }
+
     }
 
     func connectSession()
     {
-        let defaults = NSUserDefaults.standardUserDefaults()
+
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        self.view.addSubview(spinner)
+        spinner.startAnimating()
 
         let host = defaults.objectForKey("host") as String
         let user = defaults.objectForKey("user") as String
@@ -38,9 +46,19 @@ class ViewController: UIViewController {
         //store pass in keychain
 
         sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
-        if (sshSession != nil)
+        if (sshSession != nil && sshSession!.connected)
         {
             sshSession!.authenticateByPassword(pass)
+            spinner.stopAnimating()
+            spinner.removeFromSuperview()
+        }
+
+        else
+        {
+            spinner.stopAnimating()
+            spinner.removeFromSuperview()
+            let alert = UIAlertView(title: "Connection Error", message: "SSH session was unable to connect", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
         }
     }
 
@@ -50,7 +68,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func toggleLight(sender: AnyObject) {
-        lightStateLabel.text = sendCommand("python ~/ArduinoControl/py-lights.py toggle");
+        lightStateLabel.text = sendCommand(defaults.objectForKey("lightCommand") as String!);
     }
 
 
@@ -60,13 +78,18 @@ class ViewController: UIViewController {
         {
             connectSession()
         }
-        
+
+        if (!sshSession!.connected)
+        {
+            return "Error"
+        }
+
         var error: NSError?
         let response = sshSession!.channel.execute(command, error: &error)
 
         if (error != nil)
         {
-            println(error)
+            println("Connection sending error: \(error)")
         }
 
         return response

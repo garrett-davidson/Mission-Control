@@ -15,22 +15,29 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
 
+    let defaults = NSUserDefaults.standardUserDefaults()
+
     var firstResponder: AnyObject?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        populateTextFields()
+        loadSettings()
     }
 
-    func populateTextFields() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+    func loadSettings() {
+
         for myView in self.view.subviews
         {
             if myView.isMemberOfClass(UITextField)
             {
                 (myView as UITextField).text = defaults.objectForKey((myView as UITextField).placeholder!) as String
+            }
+
+            else if myView.isMemberOfClass(UISwitch)
+            {
+                (myView as UISwitch).on = defaults.boolForKey((myView as UISwitch).accessibilityLabel)
             }
         }
     }
@@ -40,7 +47,7 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func dismissKeyboard(sender: AnyObject) {
+    @IBAction func dismissKeyboard1(sender: AnyObject) {
         if (firstResponder != nil)
         {
             firstResponder!.resignFirstResponder()
@@ -66,8 +73,16 @@ class SettingsViewController: UIViewController {
         sender.resignFirstResponder()
     }
 
-    @IBAction func chageFirstResponder(sender: AnyObject) {
-        firstResponder = sender
+    @IBAction func writeBool(sender: UISwitch) {
+        defaults.setBool(sender.on, forKey: sender.accessibilityLabel)
     }
+    @IBAction func changeFirstResponder(sender: AnyObject) {
+        firstResponder = sender
+
+    }
+
+    @IBAction func showAdvanced(sender: AnyObject) {
+    }
+    
 
 }

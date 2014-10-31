@@ -16,7 +16,6 @@
 		0D2835D319FC8949006BE10F /* Light-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2835D219FC8949006BE10F /* Light-on.png */; };
 		0D2835DD19FC92C3006BE10F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2835DC19FC92C3006BE10F /* libz.dylib */; };
 		0D2835DF19FC92C9006BE10F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2835DE19FC92C9006BE10F /* CFNetwork.framework */; };
-		0D455B9119FDD82600C991AC /* Mission Control Icon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D455B9019FDD82600C991AC /* Mission Control Icon29x29@2x.png */; };
 		0DECD5F619FDBC60002F34CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */; };
 		0DECD5F819FDC154002F34CE /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECD5F719FDC154002F34CE /* NMSSH.framework */; };
 /* End PBXBuildFile section */
@@ -58,7 +57,6 @@
 		0D2835D219FC8949006BE10F /* Light-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Light-on.png"; sourceTree = "<group>"; };
 		0D2835DC19FC92C3006BE10F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0D2835DE19FC92C9006BE10F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		0D455B9019FDD82600C991AC /* Mission Control Icon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mission Control Icon29x29@2x.png"; sourceTree = "<group>"; };
 		0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0DECD5F719FDC154002F34CE /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +115,6 @@
 				0D2835A719FB3976006BE10F /* Supporting Files */,
 				0D2835CB19FC8292006BE10F /* Mission Control-Bridging-Header.h */,
 				0D2835D219FC8949006BE10F /* Light-on.png */,
-				0D455B9019FDD82600C991AC /* Mission Control Icon29x29@2x.png */,
 			);
 			path = "Mission Control";
 			sourceTree = "<group>";
@@ -232,7 +229,6 @@
 				0D2835AF19FB3976006BE10F /* Main.storyboard in Resources */,
 				0D2835D319FC8949006BE10F /* Light-on.png in Resources */,
 				0D2835B419FB3976006BE10F /* LaunchScreen.xib in Resources */,
-				0D455B9119FDD82600C991AC /* Mission Control Icon29x29@2x.png in Resources */,
 				0D2835B119FB3976006BE10F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,9 +379,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Mission",
-					Control,
+					"$(PROJECT_DIR)/**",
+					"\"$(PROJECT_DIR)/Mission Control\"",
 				);
 				INFOPLIST_FILE = "Mission Control/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -405,9 +400,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Mission",
-					Control,
+					"$(PROJECT_DIR)/**",
+					"\"$(PROJECT_DIR)/Mission Control\"",
 				);
 				INFOPLIST_FILE = "Mission Control/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

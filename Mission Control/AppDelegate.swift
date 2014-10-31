@@ -39,6 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.setObject("22", forKey: "port")
         }
 
+        if (defaults.objectForKey("startOnLaunch") == nil)
+        {
+            defaults.setBool(false, forKey: "startOnLaunch")
+        }
+
+        if (defaults.objectForKey("lightCommand") == nil)
+        {
+            defaults.setObject("python ~/ArduinoControl/py-lights.py toggle", forKey: "lightCommand")
+        }
+
         return true
     }
 
