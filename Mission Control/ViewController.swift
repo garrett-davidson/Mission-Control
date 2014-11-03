@@ -23,12 +23,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+    }
 
+    override func viewDidAppear(animated: Bool) {
         if (defaults.boolForKey("startOnLaunch"))
         {
             self.connectSession()
         }
 
+        else
+        {
+            println("Not connecting on launch")
+        }
     }
 
     func connectSession()
@@ -40,10 +46,11 @@ class ViewController: UIViewController {
 
         let host = defaults.objectForKey("host") as String
         let user = defaults.objectForKey("user") as String
-        let pass = defaults.objectForKey("pass") as String
+        let pass = SSKeychain.passwordForService("MissionControlSSH", account: user) as String
         let port = defaults.objectForKey("port") as String
-        //TODO
-        //store pass in keychain
+
+
+        println("Read user: \(user) and pass: \(pass)")
 
         sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
         if (sshSession != nil && sshSession!.connected)
@@ -89,7 +96,8 @@ class ViewController: UIViewController {
 
         if (error != nil)
         {
-            println("Connection sending error: \(error)")
+            println("Connection sending error: \(error!)")
+            let alert = UIAlertView(title: "Command Error", message: error!.description, delegate: self, cancelButtonTitle: "OK")
         }
 
         return response

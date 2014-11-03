@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var portTextField: UITextField!
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
+    @IBOutlet weak var mainView: UIView!
 
     let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -26,18 +27,38 @@ class SettingsViewController: UIViewController {
         loadSettings()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        loadSettings()
+    }
+
     func loadSettings() {
 
-        for myView in self.view.subviews
+        for myView in self.mainView.subviews
         {
             if myView.isMemberOfClass(UITextField)
             {
-                (myView as UITextField).text = defaults.objectForKey((myView as UITextField).placeholder!) as String
+                let key = (myView as UITextField).placeholder! as String
+
+                switch key
+                {
+                    case "pass":
+
+                        (myView as UITextField).text = SSKeychain.passwordForService("MissionControlSSH", account: defaults.objectForKey("user") as String!)
+                        let user = "user"
+                        println("Read user: \(defaults.objectForKey(user)!) and pass: \((myView as UITextField).text)")
+                        break
+
+                    default:
+                        (myView as UITextField).text = defaults.objectForKey((myView as UITextField).placeholder!) as String
+                        break
+                }
+
+
             }
 
             else if myView.isMemberOfClass(UISwitch)
             {
-                (myView as UISwitch).on = defaults.boolForKey((myView as UISwitch).accessibilityLabel)
+                (myView as UISwitch).on = defaults.boolForKey(myView.restorationIdentifier!!)
             }
         }
     }
@@ -66,15 +87,31 @@ class SettingsViewController: UIViewController {
     */
 
     @IBAction func writeSettings(sender: UITextField) {
+
         let defaults = NSUserDefaults.standardUserDefaults()
 
-        defaults.setObject(sender.text, forKey: sender.placeholder!)
+        let key = sender.placeholder!
+
+        switch key
+        {
+            case "pass":
+                SSKeychain.setPassword(sender.text, forService: "MissionControlSSH", account: defaults.objectForKey("user") as String!)
+
+                let user = "user"
+                println("Wrote user: \(defaults.objectForKey(user)!) and pass: \(sender.text)")
+                break
+
+            default:
+                defaults.setObject(sender.text, forKey: sender.placeholder!)
+        }
+
 
         sender.resignFirstResponder()
     }
 
     @IBAction func writeBool(sender: UISwitch) {
-        defaults.setBool(sender.on, forKey: sender.accessibilityLabel)
+
+        defaults.setBool(sender.on, forKey: sender.restorationIdentifier!)
     }
     @IBAction func changeFirstResponder(sender: AnyObject) {
         firstResponder = sender
@@ -83,6 +120,9 @@ class SettingsViewController: UIViewController {
 
     @IBAction func showAdvanced(sender: AnyObject) {
     }
-    
+
+    @IBAction func dismissModal(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }

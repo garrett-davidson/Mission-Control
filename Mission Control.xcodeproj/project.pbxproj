@@ -16,6 +16,7 @@
 		0D2835D319FC8949006BE10F /* Light-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D2835D219FC8949006BE10F /* Light-on.png */; };
 		0D2835DD19FC92C3006BE10F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2835DC19FC92C3006BE10F /* libz.dylib */; };
 		0D2835DF19FC92C9006BE10F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2835DE19FC92C9006BE10F /* CFNetwork.framework */; };
+		0D6DA5411A07C94B0034B861 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6DA5401A07C94B0034B861 /* SSKeychain.m */; };
 		0DECD5F619FDBC60002F34CE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */; };
 		0DECD5F819FDC154002F34CE /* NMSSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DECD5F719FDC154002F34CE /* NMSSH.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,8 @@
 		0D2835D219FC8949006BE10F /* Light-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Light-on.png"; sourceTree = "<group>"; };
 		0D2835DC19FC92C3006BE10F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0D2835DE19FC92C9006BE10F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0D6DA53F1A07C94B0034B861 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		0D6DA5401A07C94B0034B861 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0DECD5F719FDC154002F34CE /* NMSSH.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NMSSH.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +109,8 @@
 		0D2835A619FB3976006BE10F /* Mission Control */ = {
 			isa = PBXGroup;
 			children = (
+				0D6DA53F1A07C94B0034B861 /* SSKeychain.h */,
+				0D6DA5401A07C94B0034B861 /* SSKeychain.m */,
 				0D2835A919FB3976006BE10F /* AppDelegate.swift */,
 				0D2835AB19FB3976006BE10F /* ViewController.swift */,
 				0DECD5F519FDBC60002F34CE /* SettingsViewController.swift */,
@@ -248,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D2835AC19FB3976006BE10F /* ViewController.swift in Sources */,
+				0D6DA5411A07C94B0034B861 /* SSKeychain.m in Sources */,
 				0D2835AA19FB3976006BE10F /* AppDelegate.swift in Sources */,
 				0DECD5F619FDBC60002F34CE /* SettingsViewController.swift in Sources */,
 			);

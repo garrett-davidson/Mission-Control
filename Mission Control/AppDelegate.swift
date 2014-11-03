@@ -29,11 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.setObject("username", forKey: "user")
         }
 
-        if (defaults.objectForKey("pass") == nil)
-        {
-            defaults.setObject("password", forKey: "pass")
-        }
-
         if (defaults.objectForKey("port") == nil)
         {
             defaults.setObject("22", forKey: "port")
@@ -46,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if (defaults.objectForKey("lightCommand") == nil)
         {
-            defaults.setObject("python ~/ArduinoControl/py-lights.py toggle", forKey: "lightCommand")
+            defaults.setObject("python '/home/garrett/btsync/Test (1)/ArduinoControl/lights.py' toggle", forKey: "lightCommand")
         }
 
         return true
