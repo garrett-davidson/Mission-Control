@@ -40,7 +40,7 @@
                                     <action selector="toggleLight:" destination="BYZ-38-t0r" eventType="valueChanged" id="mrW-wq-WgV"/>
                                 </connections>
                             </switch>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aS8-aR-NTx">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aS8-aR-NTx">
                                 <rect key="frame" x="220" y="100" width="161" height="147"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rpc-iJ-y7V">

@@ -65,7 +65,10 @@ class ViewController: UIViewController {
                 self.sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
                 if (self.sshSession != nil && self.sshSession!.connected)
                 {
-                    self.activityLabel.text = "Authenticating..."
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.activityLabel.text = "Authenticating..."
+                    })
+
                     self.sshSession!.authenticateByPassword(pass)
                 }
 
@@ -75,8 +78,10 @@ class ViewController: UIViewController {
                     alert.show()
                 }
 
-                self.spinner.stopAnimating()
-                self.activityView.hidden = true
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.spinner.stopAnimating()
+                    self.activityView.hidden = true
+                })
             })
 
         }
