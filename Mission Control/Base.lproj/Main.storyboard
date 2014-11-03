@@ -101,10 +101,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ni-iu-RtC">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ni-iu-RtC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qd-Nt-7h4">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qd-Nt-7h4">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="host" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fQi-h5-M9I">
@@ -199,7 +199,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="startOnLaunch" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WrE-2C-E7Z">
-                                                <rect key="frame" x="543" y="199" width="51" height="31"/>
+                                                <rect key="frame" x="537" y="199" width="51" height="31"/>
                                                 <accessibility key="accessibilityConfiguration" label="startOnLaunch">
                                                     <bool key="isElement" value="YES"/>
                                                 </accessibility>
@@ -210,7 +210,7 @@
                                                     <action selector="writeBool:" destination="Ote-Z9-Lhq" eventType="valueChanged" id="xmx-0Y-Pij"/>
                                                 </connections>
                                             </switch>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zQ-vT-bNs">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zQ-vT-bNs">
                                                 <rect key="frame" x="238" y="513" width="125" height="30"/>
                                                 <state key="normal" title="Advanced options">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -226,7 +226,7 @@
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="7Wf-72-TQT" firstAttribute="top" secondItem="fQi-h5-M9I" secondAttribute="bottom" constant="8" symbolic="YES" id="0l3-kR-lbn"/>
-                                            <constraint firstItem="WrE-2C-E7Z" firstAttribute="trailing" secondItem="4qd-Nt-7h4" secondAttribute="trailingMargin" id="4Ia-sm-Hcm"/>
+                                            <constraint firstItem="WrE-2C-E7Z" firstAttribute="trailing" secondItem="4qd-Nt-7h4" secondAttribute="trailingMargin" constant="-6" id="4Ia-sm-Hcm"/>
                                             <constraint firstItem="7Wf-72-TQT" firstAttribute="baseline" secondItem="Sff-zc-bOX" secondAttribute="firstBaseline" id="6hT-IA-hVt"/>
                                             <constraint firstItem="7Wf-72-TQT" firstAttribute="trailing" secondItem="6a4-M9-CXV" secondAttribute="trailing" id="7CC-zq-xOy"/>
                                             <constraint firstItem="kpL-DN-oLZ" firstAttribute="top" secondItem="92b-6S-ZCW" secondAttribute="bottom" constant="19" id="92S-YT-sSb"/>
@@ -281,7 +281,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="0WP-ek-o1c"/>
+                                <exclude reference="tSc-Xr-cAS"/>
                             </mask>
                         </variation>
                         <connections>
