@@ -39,9 +39,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.setBool(false, forKey: "startOnLaunch")
         }
 
-        if (defaults.objectForKey("lightCommand") == nil)
+
+        
+
+        if (defaults.objectForKey("lightOn") == nil)
         {
-            defaults.setObject("python '/home/garrett/btsync/Test (1)/ArduinoControl/lights.py' toggle", forKey: "lightCommand")
+            defaults.setObject("On", forKey: "lightOn")
+        }
+
+        if (defaults.objectForKey("lightOff") == nil)
+        {
+            defaults.setObject("Off", forKey: "lightOff")
+        }
+
+        if (defaults.objectForKey("pythonRelayCommand") == nil)
+        {
+            defaults.setObject("python \"btsync/Test (1)/ArduinoControl/serial-relay.py\"", forKey: "pythonRelayCommand")
         }
 
         return true

@@ -16,13 +16,21 @@ class ViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var activityLabel: UILabel!
+    @IBOutlet weak var activityView: UIView!
+
     @IBOutlet weak var lightStateLabel: UILabel!
+    @IBOutlet weak var lightSwitch: UISwitch!
     var sshSession: NMSSHSession?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        activityView.layer.cornerRadius = 10.0
+        activityView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -40,32 +48,37 @@ class ViewController: UIViewController {
     func connectSession()
     {
 
-        let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        self.view.addSubview(spinner)
-        spinner.startAnimating()
 
-        let host = defaults.objectForKey("host") as String
-        let user = defaults.objectForKey("user") as String
-        let pass = SSKeychain.passwordForService("MissionControlSSH", account: user) as String
-        let port = defaults.objectForKey("port") as String
-
-
-        println("Read user: \(user) and pass: \(pass)")
-
-        sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
-        if (sshSession != nil && sshSession!.connected)
+        if (sshSession == nil || !sshSession!.connected)
         {
-            sshSession!.authenticateByPassword(pass)
-            spinner.stopAnimating()
-            spinner.removeFromSuperview()
-        }
+            activityView.hidden = false
+            activityLabel.text = "Connecting..."
+            spinner.startAnimating()
 
-        else
-        {
-            spinner.stopAnimating()
-            spinner.removeFromSuperview()
-            let alert = UIAlertView(title: "Connection Error", message: "SSH session was unable to connect", delegate: self, cancelButtonTitle: "OK")
-            alert.show()
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                let host = self.defaults.objectForKey("host") as String
+                let user = self.defaults.objectForKey("user") as String
+                let pass = SSKeychain.passwordForService("MissionControlSSH", account: user) as String
+                let port = self.defaults.objectForKey("port") as String
+
+
+                self.sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
+                if (self.sshSession != nil && self.sshSession!.connected)
+                {
+                    self.activityLabel.text = "Authenticating..."
+                    self.sshSession!.authenticateByPassword(pass)
+                }
+
+                else
+                {
+                    let alert = UIAlertView(title: "Connection Error", message: "SSH session was unable to connect", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                }
+
+                self.spinner.stopAnimating()
+                self.activityView.hidden = true
+            })
+
         }
     }
 
@@ -74,10 +87,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func toggleLight(sender: AnyObject) {
-        lightStateLabel.text = sendCommand(defaults.objectForKey("lightCommand") as String!);
+    @IBAction func toggleLight(sender: UISwitch) {
+        let pythonRelay = defaults.objectForKey("pythonRelayCommand") as String!
+        var command = ""
+
+        if (sender.on)
+        {
+            command = defaults.objectForKey("lightOn") as String!
+        }
+
+        else
+        {
+            command = defaults.objectForKey("lightOff") as String!
+        }
+
+        lightStateLabel.text = sendCommand("\(pythonRelay) \(command)")
     }
 
+    @IBAction func toggleLightImage(sender: AnyObject) {
+        lightSwitch.setOn(!lightSwitch.on, animated: true)
+        toggleLight(lightSwitch)
+    }
 
     func sendCommand(command: String) -> String
     {
@@ -86,9 +116,9 @@ class ViewController: UIViewController {
             connectSession()
         }
 
-        if (!sshSession!.connected)
+        while (!sshSession!.connected && sshSession!.lastError == nil)
         {
-            return "Error"
+            sleep(100)
         }
 
         var error: NSError?

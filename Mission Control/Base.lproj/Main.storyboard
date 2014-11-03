@@ -19,32 +19,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sen-e3-9CH">
-                                <rect key="frame" x="260" y="51" width="80" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sen-e3-9CH">
+                                <rect key="frame" x="260" y="58" width="80" height="80"/>
                                 <state key="normal" image="Light-on.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="toggleLight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VGe-ix-Qoh"/>
+                                    <action selector="toggleLightImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="apH-Tg-8yu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lh-5u-cwc">
-                                <rect key="frame" x="289" y="139" width="23" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lh-5u-cwc">
+                                <rect key="frame" x="288" y="146" width="23" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLm-e3-DfT">
+                                <rect key="frame" x="276" y="174" width="51" height="31"/>
+                                <connections>
+                                    <action selector="toggleLight:" destination="BYZ-38-t0r" eventType="valueChanged" id="mrW-wq-WgV"/>
+                                </connections>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aS8-aR-NTx">
+                                <rect key="frame" x="220" y="100" width="161" height="147"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rpc-iJ-y7V">
+                                        <rect key="frame" x="62" y="55" width="37" height="37"/>
+                                        <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AC4-QV-G0u">
+                                        <rect key="frame" x="28" y="112" width="105" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AC4-QV-G0u" secondAttribute="bottom" constant="14.5" id="J0Q-uG-oUc"/>
+                                    <constraint firstAttribute="centerX" secondItem="AC4-QV-G0u" secondAttribute="centerX" id="Jtk-qR-vi0"/>
+                                    <constraint firstAttribute="height" constant="147" id="Phx-p2-GZL"/>
+                                    <constraint firstAttribute="width" constant="161" id="bLn-qx-hg7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sen-e3-9CH" firstAttribute="centerX" secondItem="4Lh-5u-cwc" secondAttribute="centerX" id="0Qu-A8-P8b"/>
+                            <constraint firstItem="sen-e3-9CH" firstAttribute="centerX" secondItem="kLm-e3-DfT" secondAttribute="centerX" id="3li-3H-cPB"/>
+                            <constraint firstAttribute="centerX" secondItem="sen-e3-9CH" secondAttribute="centerX" id="DvF-ed-eRE"/>
+                            <constraint firstAttribute="centerX" secondItem="aS8-aR-NTx" secondAttribute="centerX" id="Jtq-6O-xsu"/>
+                            <constraint firstItem="kLm-e3-DfT" firstAttribute="top" secondItem="4Lh-5u-cwc" secondAttribute="bottom" constant="7.5" id="PcZ-9W-ieM"/>
+                            <constraint firstItem="aS8-aR-NTx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="QGc-it-u8g"/>
+                            <constraint firstItem="4Lh-5u-cwc" firstAttribute="top" secondItem="sen-e3-9CH" secondAttribute="bottom" constant="8" id="TnV-xd-c5v"/>
+                            <constraint firstItem="sen-e3-9CH" firstAttribute="centerX" secondItem="4Lh-5u-cwc" secondAttribute="centerX" id="U8x-rB-kaA"/>
+                            <constraint firstItem="sen-e3-9CH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="pU2-L4-NBE"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Remote" id="ehm-8L-BFS"/>
                     <connections>
+                        <outlet property="activityLabel" destination="AC4-QV-G0u" id="UhA-t9-DrG"/>
+                        <outlet property="activityView" destination="aS8-aR-NTx" id="N01-4q-e02"/>
                         <outlet property="lightStateLabel" destination="4Lh-5u-cwc" id="Fbg-pq-g61"/>
+                        <outlet property="lightSwitch" destination="kLm-e3-DfT" id="f2M-wC-KKf"/>
+                        <outlet property="spinner" destination="rpc-iJ-y7V" id="42B-sq-FAQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="400"/>
+            <point key="canvasLocation" x="1113" y="400"/>
         </scene>
         <!--Settings-->
         <scene sceneID="bzg-kA-AzQ">
@@ -175,6 +218,9 @@
                                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                                     <rect key="frame" x="137.5" y="513" width="125" height="30"/>
                                                 </variation>
+                                                <connections>
+                                                    <segue destination="uh9-Kh-cQB" kind="showDetail" id="qSD-hq-fV2"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -259,6 +305,42 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="863" y="1101"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="o6T-qw-9u6">
+            <objects>
+                <viewController id="uh9-Kh-cQB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="feU-IB-5j5"/>
+                        <viewControllerLayoutGuide type="bottom" id="cEk-1l-b6z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UJ7-ZW-dke">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rwr-Gv-yJh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="OPf-V0-jef">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="eu1-GP-6k3">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4YF-wd-n7c">
+                                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CpX-dt-M1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1601" y="1101"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mTD-xq-eP5">

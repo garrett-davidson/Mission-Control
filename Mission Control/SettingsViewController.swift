@@ -44,8 +44,6 @@ class SettingsViewController: UIViewController {
                     case "pass":
 
                         (myView as UITextField).text = SSKeychain.passwordForService("MissionControlSSH", account: defaults.objectForKey("user") as String!)
-                        let user = "user"
-                        println("Read user: \(defaults.objectForKey(user)!) and pass: \((myView as UITextField).text)")
                         break
 
                     default:
@@ -97,8 +95,6 @@ class SettingsViewController: UIViewController {
             case "pass":
                 SSKeychain.setPassword(sender.text, forService: "MissionControlSSH", account: defaults.objectForKey("user") as String!)
 
-                let user = "user"
-                println("Wrote user: \(defaults.objectForKey(user)!) and pass: \(sender.text)")
                 break
 
             default:
