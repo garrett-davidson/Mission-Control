@@ -52,9 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.setObject("Off", forKey: "lightOff")
         }
 
-        if (defaults.objectForKey("pythonRelayCommand") == nil)
+        if (defaults.objectForKey("serialRelayCommand") == nil)
         {
-            defaults.setObject("python \"btsync/Test (1)/ArduinoControl/serial-relay.py\"", forKey: "pythonRelayCommand")
+            defaults.setObject("python \"btsync/Test (1)/ArduinoControl/serial-relay.py\"", forKey: "serialRelayCommand")
         }
 
         return true

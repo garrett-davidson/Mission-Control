@@ -93,7 +93,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func toggleLight(sender: UISwitch) {
-        let pythonRelay = defaults.objectForKey("pythonRelayCommand") as String!
+        let serialRelay = defaults.objectForKey("serialRelayCommand") as String!
         var command = ""
 
         if (sender.on)
@@ -106,7 +106,7 @@ class ViewController: UIViewController {
             command = defaults.objectForKey("lightOff") as String!
         }
 
-        lightStateLabel.text = sendCommand("\(pythonRelay) \(command)")
+        lightStateLabel.text = sendCommand("\(serialRelay) \(command)")
     }
 
     @IBAction func toggleLightImage(sender: AnyObject) {

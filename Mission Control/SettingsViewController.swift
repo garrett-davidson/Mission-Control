@@ -14,7 +14,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var portTextField: UITextField!
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
+    
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var advancedView: UIView!
 
     let defaults = NSUserDefaults.standardUserDefaults()
 
@@ -24,7 +26,6 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        loadSettings()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -33,11 +34,13 @@ class SettingsViewController: UIViewController {
 
     func loadSettings() {
 
-        for myView in self.mainView.subviews
+        let view = mainView == nil ? advancedView : mainView
+
+        for myView in view.subviews
         {
             if myView.isMemberOfClass(UITextField)
             {
-                let key = (myView as UITextField).placeholder! as String
+                let key = myView.restorationIdentifier!! as String
 
                 switch key
                 {
@@ -47,7 +50,7 @@ class SettingsViewController: UIViewController {
                         break
 
                     default:
-                        (myView as UITextField).text = defaults.objectForKey((myView as UITextField).placeholder!) as String
+                        (myView as UITextField).text = defaults.objectForKey(myView.restorationIdentifier!!) as String
                         break
                 }
 
@@ -88,7 +91,7 @@ class SettingsViewController: UIViewController {
 
         let defaults = NSUserDefaults.standardUserDefaults()
 
-        let key = sender.placeholder!
+        let key = sender.restorationIdentifier!
 
         switch key
         {
@@ -98,7 +101,7 @@ class SettingsViewController: UIViewController {
                 break
 
             default:
-                defaults.setObject(sender.text, forKey: sender.placeholder!)
+                defaults.setObject(sender.text, forKey: sender.restorationIdentifier!)
         }
 
 
