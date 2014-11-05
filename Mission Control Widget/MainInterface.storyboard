@@ -27,7 +27,7 @@
                                     <action selector="toggleLightImage:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Eg5-4F-mcH"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-4t-LTP">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-4t-LTP">
                                 <rect key="frame" x="16" y="41" width="51" height="31"/>
                                 <connections>
                                     <action selector="toggleLight:" destination="M4Y-Lb-cyx" eventType="valueChanged" id="aCv-Dc-MOO"/>
