@@ -34,6 +34,20 @@
                ReferencedContainer = "container:Mission Control.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0DE80C821A0AA18100548C39"
+               BuildableName = "MCFrameworkTests.xctest"
+               BlueprintName = "MCFrameworkTests"
+               ReferencedContainer = "container:Mission Control.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +63,16 @@
                BlueprintIdentifier = "0D2835B819FB3976006BE10F"
                BuildableName = "Mission ControlTests.xctest"
                BlueprintName = "Mission ControlTests"
+               ReferencedContainer = "container:Mission Control.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0DE80C821A0AA18100548C39"
+               BuildableName = "MCFrameworkTests.xctest"
+               BlueprintName = "MCFrameworkTests"
                ReferencedContainer = "container:Mission Control.xcodeproj">
             </BuildableReference>
          </TestableReference>

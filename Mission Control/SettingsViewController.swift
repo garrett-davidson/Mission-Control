@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var advancedView: UIView!
 
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = NSUserDefaults(suiteName: "group.com.A-Programmer-s-Crucible.Mission-Control")!
 
     var firstResponder: AnyObject?
 
@@ -88,8 +88,6 @@ class SettingsViewController: UIViewController {
     */
 
     @IBAction func writeSettings(sender: UITextField) {
-
-        let defaults = NSUserDefaults.standardUserDefaults()
 
         let key = sender.restorationIdentifier!
 

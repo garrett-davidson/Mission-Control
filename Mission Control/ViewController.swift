@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = NSUserDefaults(suiteName: "group.com.A-Programmer-s-Crucible.Mission-Control")!
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,30 +58,33 @@ class ViewController: UIViewController {
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 let host = self.defaults.objectForKey("host") as String
                 let user = self.defaults.objectForKey("user") as String
-                let pass = SSKeychain.passwordForService("MissionControlSSH", account: user) as String
+                let pass = SSKeychain.passwordForService("MissionControlSSH", account: user) as String?
                 let port = self.defaults.objectForKey("port") as String
 
 
-                self.sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
-                if (self.sshSession != nil && self.sshSession!.connected)
+                if (pass != nil)
                 {
+                    self.sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
+                    if (self.sshSession != nil && self.sshSession!.connected)
+                    {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.activityLabel.text = "Authenticating..."
+                        })
+
+                        self.sshSession!.authenticateByPassword(pass)
+                    }
+
+                    else
+                    {
+                        let alert = UIAlertView(title: "Connection Error", message: "SSH session was unable to connect", delegate: self, cancelButtonTitle: "OK")
+                        alert.show()
+                    }
+
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.activityLabel.text = "Authenticating..."
+                        self.spinner.stopAnimating()
+                        self.activityView.hidden = true
                     })
-
-                    self.sshSession!.authenticateByPassword(pass)
                 }
-
-                else
-                {
-                    let alert = UIAlertView(title: "Connection Error", message: "SSH session was unable to connect", delegate: self, cancelButtonTitle: "OK")
-                    alert.show()
-                }
-
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.spinner.stopAnimating()
-                    self.activityView.hidden = true
-                })
             })
 
         }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Mission_Control_Widget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDn-yi-ZLh">
+                                <rect key="frame" x="20" y="3" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Rxn-L5-i18"/>
+                                    <constraint firstAttribute="height" constant="40" id="U5f-Hl-sHx"/>
+                                </constraints>
+                                <state key="normal" image="Light-on.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleLightImage:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="Eg5-4F-mcH"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-4t-LTP">
+                                <rect key="frame" x="16" y="41" width="51" height="31"/>
+                                <connections>
+                                    <action selector="toggleLight:" destination="M4Y-Lb-cyx" eventType="valueChanged" id="aCv-Dc-MOO"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3g-Jt-QJp">
+                                <rect key="frame" x="79" y="29" width="23" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfz-3O-d4Z">
+                                <rect key="frame" x="170" y="29" width="117" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="cDn-yi-ZLh" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="4" id="Gei-zo-tFV"/>
+                            <constraint firstItem="bbp-4t-LTP" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="41" id="NuZ-dy-1sn"/>
+                            <constraint firstItem="X3g-Jt-QJp" firstAttribute="leading" secondItem="bbp-4t-LTP" secondAttribute="trailing" constant="14" id="PiE-yZ-Fct"/>
+                            <constraint firstItem="vfz-3O-d4Z" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" constant="-17" id="S3R-ct-Lke"/>
+                            <constraint firstItem="cDn-yi-ZLh" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="3" id="TyQ-RO-lZS"/>
+                            <constraint firstItem="X3g-Jt-QJp" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="29" id="UA8-7c-Kr3"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="bbp-4t-LTP" secondAttribute="bottom" constant="8" id="ZvL-A5-ebs"/>
+                            <constraint firstItem="bbp-4t-LTP" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="h3K-wu-KYp"/>
+                            <constraint firstItem="vfz-3O-d4Z" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="29" id="rJu-LB-E4p"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="80"/>
+                    <connections>
+                        <outlet property="lightStateLabel" destination="X3g-Jt-QJp" id="kGm-c0-gHW"/>
+                        <outlet property="lightSwitch" destination="bbp-4t-LTP" id="0pp-rY-VVP"/>
+                        <outlet property="sessionStateLabel" destination="vfz-3O-d4Z" id="fGv-jE-79b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="515" y="259.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Light-on.png" width="80" height="80"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MCFramework.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Mission Control Widget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Mission Control.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +28,21 @@
 			<true/>
 		</dict>
 		<key>0D2835B819FB3976006BE10F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0D3CDB881A09390400DB9D2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0DE80C781A0AA18100548C39</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0DE80C821A0AA18100548C39</key>
 		<dict>
 			<key>primary</key>
 			<true/>
