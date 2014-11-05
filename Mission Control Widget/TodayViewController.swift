@@ -41,6 +41,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.NewData)
     }
 
+    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets
+    {
+        let newInsets = UIEdgeInsets(top: defaultMarginInsets.top, left: defaultMarginInsets.left, bottom: 0, right: defaultMarginInsets.right)
+        return newInsets
+    }
+
 
     @IBAction func toggleLight(sender: UISwitch) {
         let serialRelay = defaults.objectForKey("serialRelayCommand") as String!
@@ -98,34 +104,42 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 //            spinner.startAnimating()
 
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                let host = self.defaults.objectForKey("host") as String
-                let user = self.defaults.objectForKey("user") as String
-                let pass = SSKeychain.passwordForService("MissionControlSSH", account: user) as String
-                let port = self.defaults.objectForKey("port") as String
+                let host = self.defaults.objectForKey("host") as String?
+                let user = self.defaults.objectForKey("user") as String?
+                let pass = SSKeychain.passwordForService("MissionControlSSH", account: user) as String?
+                let port = self.defaults.objectForKey("port") as String?
 
 
-                self.sshSession = NMSSHSession.connectToHost(host, port: port.toInt()!, withUsername: user)
-                if (self.sshSession != nil && self.sshSession!.connected)
+                if (pass != nil)
                 {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.sessionStateLabel.text = "Authenticating..."
-                    })
+                    self.sshSession = NMSSHSession.connectToHost(host!, port: port!.toInt()!, withUsername: user!)
+                    if (self.sshSession != nil && self.sshSession!.connected)
+                    {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.sessionStateLabel.text = "Authenticating..."
+                        })
 
-                    self.sshSession!.authenticateByPassword(pass)
+                        self.sshSession!.authenticateByPassword(pass!)
+                    }
+
+                    else
+                    {
+                        println("SSH connection error")
+    //                    let alert = UIAlertView(title: "Connection Error", message: "SSH session was unable to connect", delegate: self, cancelButtonTitle: "OK")
+    //                    alert.show()
+                    }
+
+                    dispatch_async(dispatch_get_main_queue(), {
+    //                    self.spinner.stopAnimating()
+    //                    self.activityView.hidden = true
+                        self.sessionStateLabel.text = "Connected"
+                    })
                 }
 
                 else
                 {
-                    println("SSH connection error")
-//                    let alert = UIAlertView(title: "Connection Error", message: "SSH session was unable to connect", delegate: self, cancelButtonTitle: "OK")
-//                    alert.show()
+                    self.sessionStateLabel.text = "Not connected"
                 }
-
-                dispatch_async(dispatch_get_main_queue(), {
-//                    self.spinner.stopAnimating()
-//                    self.activityView.hidden = true
-                    self.sessionStateLabel.text = "Connected"
-                })
             })
             
         }
