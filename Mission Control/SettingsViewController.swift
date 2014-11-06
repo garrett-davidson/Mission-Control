@@ -29,7 +29,9 @@ class SettingsViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
+        println("Loading settings")
         loadSettings()
+        println("Settings loaded")
     }
 
     func loadSettings() {
@@ -38,11 +40,11 @@ class SettingsViewController: UIViewController {
 
         for myView in view.subviews
         {
+            let key = myView.restorationIdentifier as String?
+
             if myView.isMemberOfClass(UITextField)
             {
-                let key = myView.restorationIdentifier!! as String
-
-                switch key
+                switch key!
                 {
                     case "pass":
 
@@ -53,13 +55,16 @@ class SettingsViewController: UIViewController {
                         (myView as UITextField).text = defaults.objectForKey(myView.restorationIdentifier!!) as String
                         break
                 }
-
-
             }
 
             else if myView.isMemberOfClass(UISwitch)
             {
-                (myView as UISwitch).on = defaults.boolForKey(myView.restorationIdentifier!!)
+                (myView as UISwitch).on = defaults.boolForKey(key!)
+            }
+
+            if (key != nil)
+            {
+                println("Loaded setting for: " + key!)
             }
         }
     }
@@ -70,9 +75,12 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func dismissKeyboard1(sender: AnyObject) {
+        println("Dismissing keyboard")
         if (firstResponder != nil)
         {
             firstResponder!.resignFirstResponder()
+            println("Resigning first responder")
+            firstResponder = nil
         }
     }
     
@@ -91,6 +99,8 @@ class SettingsViewController: UIViewController {
 
         let key = sender.restorationIdentifier!
 
+        println("Writing settings for: " + key)
+
         switch key
         {
             case "pass":
@@ -103,22 +113,23 @@ class SettingsViewController: UIViewController {
         }
 
 
-        sender.resignFirstResponder()
+//        sender.resignFirstResponder()
+//        println("Resinging first responder")
     }
 
     @IBAction func writeBool(sender: UISwitch) {
-
+        println("Writing bool \(sender.on) for key: \(sender.restorationIdentifier)")
         defaults.setBool(sender.on, forKey: sender.restorationIdentifier!)
     }
     @IBAction func changeFirstResponder(sender: AnyObject) {
         firstResponder = sender
-
     }
 
     @IBAction func showAdvanced(sender: AnyObject) {
     }
 
     @IBAction func dismissModal(sender: AnyObject) {
+        println("Dismissing modal controller")
         dismissViewControllerAnimated(true, completion: nil)
     }
 
