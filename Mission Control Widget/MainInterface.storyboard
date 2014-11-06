@@ -45,6 +45,9 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="R7h-ND-oYK">
+                                <rect key="frame" x="125" y="23" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="cDn-yi-ZLh" firstAttribute="centerX" secondItem="bbp-4t-LTP" secondAttribute="centerX" id="27t-mq-P8E"/>
@@ -70,6 +73,7 @@
                         <outlet property="lightStateLabel" destination="X3g-Jt-QJp" id="kGm-c0-gHW"/>
                         <outlet property="lightSwitch" destination="bbp-4t-LTP" id="0pp-rY-VVP"/>
                         <outlet property="sessionStateLabel" destination="vfz-3O-d4Z" id="fGv-jE-79b"/>
+                        <outlet property="spinner" destination="R7h-ND-oYK" id="KK5-J9-ica"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>

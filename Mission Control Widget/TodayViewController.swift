@@ -17,6 +17,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var sessionStateLabel: UILabel!
     @IBOutlet weak var lightStateLabel: UILabel!
     @IBOutlet weak var lightSwitch: UISwitch!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
 
     
     override func viewDidLoad() {
@@ -101,7 +102,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         {
 //            activityView.hidden = false
             sessionStateLabel.text = "Connecting..."
-//            spinner.startAnimating()
+            spinner.startAnimating()
 
             dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 let host = self.defaults.objectForKey("host") as String?
@@ -130,9 +131,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     }
 
                     dispatch_async(dispatch_get_main_queue(), {
-    //                    self.spinner.stopAnimating()
+                        self.spinner.stopAnimating()
     //                    self.activityView.hidden = true
-                        self.sessionStateLabel.text = "Connected"
+                        if (self.sshSession != nil && self.sshSession!.connected)
+                        {
+                            self.sessionStateLabel.text = "Connected"
+                        }
+
+                        else
+                        {
+                            self.sessionStateLabel.text = "Not connected"
+                        }
                     })
                 }
 
