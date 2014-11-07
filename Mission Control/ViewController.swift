@@ -50,6 +50,10 @@ class ViewController: UIViewController {
         }
     }
 
+    override func applicationFinishedRestoringState() {
+        connectSession()
+    }
+
     func connectSession()
     {
 
@@ -146,10 +150,20 @@ class ViewController: UIViewController {
             connectSession()
         }
 
-        while (sshSession == nil || (!sshSession!.connected && sshSession!.lastError == nil))
+        let timeout = 10000
+        var currentTime = 0
+        while (sshSession == nil || (!sshSession!.connected && sshSession!.lastError == nil) && currentTime < timeout)
         {
             sleep(100)
+            currentTime += timeout
             println("Waiting to connect")
+        }
+
+        if (!sshSession!.connected)
+        {
+            let alert = UIAlertView(title: "Error", message: "Not connected", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
+            return "Not connected"
         }
 
         var error: NSError?
@@ -161,6 +175,7 @@ class ViewController: UIViewController {
         {
             println("Command sending returned error: \(error!)")
             let alert = UIAlertView(title: "Command Error", message: error!.description, delegate: self, cancelButtonTitle: "OK")
+            alert.show()
         }
 
         return response
